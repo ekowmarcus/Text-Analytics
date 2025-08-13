@@ -92,6 +92,8 @@ def build_binary_target(df: pd.DataFrame) -> pd.Series:
     return pd.Series(np.zeros(len(df), dtype=int), index=df.index)
 
 def ensure_two_classes(X: pd.Series, y: pd.Series):
+     # TODO: implement
+    pass
     counts = y.value_counts()
     if y.nunique() < 2:
         raise ValueError("Dataset has a single class only. Include both toxic (1) and non-toxic (0) rows.")
@@ -431,3 +433,4 @@ PAGES = {
 }
 choice = st.sidebar.selectbox("📚 Navigate", list(PAGES.keys()))
 PAGES[choice]()
+
