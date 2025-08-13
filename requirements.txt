@@ -1,9 +1,9 @@
 streamlit>=1.36
 opencv-python-headless>=4.8
-# Pin numpy by Python version to avoid wheel issues
 numpy==1.26.4; python_version < "3.12"
 numpy>=2.0.0; python_version >= "3.12"
 matplotlib>=3.8,<3.10
+gensim>=4.3,<5
 rich==14.1.0
 markdown-it-py==4.0.0
 pygments>=2.19.0
