@@ -11,6 +11,8 @@ warnings.filterwarnings("ignore")
 
 import re, numpy as np, pandas as pd
 import streamlit as st
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from datetime import datetime
 
@@ -433,4 +435,5 @@ PAGES = {
 }
 choice = st.sidebar.selectbox("📚 Navigate", list(PAGES.keys()))
 PAGES[choice]()
+
 
