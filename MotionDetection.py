@@ -917,6 +917,11 @@ PAGES = {
 }
 
 choice = st.sidebar.radio("📚 Navigate", list(PAGES.keys()))
+
+st.sidebar.markdown("---")
+
+st.sidebar.markdown("---")
+
 # --- Group 12 team (cute sidebar card) ---
 st.sidebar.markdown(
     """
@@ -941,3 +946,4 @@ st.sidebar.markdown(
     unsafe_allow_html=True,
 )
 PAGES[choice]()
+
