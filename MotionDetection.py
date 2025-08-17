@@ -896,7 +896,7 @@ def page_compare():
 
 
 def page_conclusion():
-st.subheader("Conclusion & Next Steps")
+    st.subheader("Conclusion & Next Steps")
     # Keep the original high-level summary
     st.markdown(
         "- We reframed the problem as **three independent binary tasks** (multi‑label): toxic, offensive, hateful.\n"
@@ -970,5 +970,6 @@ st.sidebar.markdown(
     unsafe_allow_html=True,
 )
 PAGES[choice]()
+
 
 
