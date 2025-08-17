@@ -927,7 +927,6 @@ def page_conclusion():
     )
     st.markdown("**Thanks!** 🎯")
 
-    st.markdown("**Thanks!** 🎯")
 
 
 # ----------------------------- Navigation -----------------------------
@@ -970,6 +969,7 @@ st.sidebar.markdown(
     unsafe_allow_html=True,
 )
 PAGES[choice]()
+
 
 
 
