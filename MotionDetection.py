@@ -896,13 +896,37 @@ def page_compare():
 
 
 def page_conclusion():
-    st.subheader("Conclusion & Next Steps")
+st.subheader("Conclusion & Next Steps")
+    # Keep the original high-level summary
     st.markdown(
         "- We reframed the problem as **three independent binary tasks** (multi‑label): toxic, offensive, hateful.\n"
         "- Mapping used: `toxic := toxic ∪ severe_toxic`, `offensive := insult ∪ obscene`, `hateful := identity_hate`.\n"
-        "- Consider refining the mapping if you have a dataset with explicit 'offensive' labels, or include `threat` if you want it treated as offensive.\n"
-        "- Next: threshold tuning per label, calibrating probabilities, class‑weighted training, or swapping in sentence transformers."
     )
+
+    # NEW: concise conclusions from current model performance
+    st.markdown("### Model performance — summary")
+    st.markdown(
+        "- **Toxic (`is_toxic`)**: Random Forest tends to have the best **F1/ROC‑AUC**; Logistic Regression gives higher **precision** (fewer false positives).\n"
+        "- **Offensive (`is_offensive`)**: Random Forest yields better **F1** (higher recall). Logistic Regression shows higher **AUC** → good ranking; lower the threshold to gain recall.\n"
+        "- **Hateful (`is_hateful`)**: Both models are weak due to class rarity. Needs more positives and/or targeted balancing."
+    )
+
+    st.markdown("### Recommendations")
+    st.markdown(
+        "- **Per‑label thresholds** instead of a global 0.5: lower for toxic/offensive to catch more, keep higher for hateful to avoid noise.\n"
+        "- **Balance the dataset** before training (upsample hateful and minority combos).\n"
+        "- **FastText tweaks** for rare words: `min word count = 1`, keep **Skip‑gram**, consider **epochs 15** and **dimension 200** if runtime allows.\n"
+        "- Keep **Random Forest** as the default for toxic/offensive; use **Logistic Regression** when you need higher precision or you will tune thresholds using its higher AUC."
+    )
+
+    st.markdown("### What to report")
+    st.markdown(
+        "- RF provides the strongest out‑of‑the‑box F1 on toxic/offensive; LR offers higher precision and often better AUC.\n"
+        "- Hateful is the hardest label; performance improves with additional data and class‑aware balancing.\n"
+        "- AUC vs F1: higher AUC for LR on offensive means it separates well but needs a lower threshold to trade precision for recall."
+    )
+    st.markdown("**Thanks!** 🎯")
+
     st.markdown("**Thanks!** 🎯")
 
 
@@ -946,4 +970,5 @@ st.sidebar.markdown(
     unsafe_allow_html=True,
 )
 PAGES[choice]()
+
 
